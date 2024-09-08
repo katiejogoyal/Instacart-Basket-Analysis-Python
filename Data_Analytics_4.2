@@ -1,0 +1,182 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "d455063c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Requirement already satisfied: pandas in /opt/anaconda3/lib/python3.11/site-packages (2.1.4)\n",
+      "Requirement already satisfied: numpy in /opt/anaconda3/lib/python3.11/site-packages (1.26.4)\n",
+      "Requirement already satisfied: python-dateutil>=2.8.2 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2.8.2)\n",
+      "Requirement already satisfied: pytz>=2020.1 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2023.3.post1)\n",
+      "Requirement already satisfied: tzdata>=2022.1 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2023.3)\n",
+      "Requirement already satisfied: six>=1.5 in /opt/anaconda3/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas) (1.16.0)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Use this cell to install pandas and numpy if you haven't already\n",
+    "!pip install pandas numpy\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "3982d79c",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Requirement already satisfied: pandas in /opt/anaconda3/lib/python3.11/site-packages (2.1.4)\n",
+      "Requirement already satisfied: numpy in /opt/anaconda3/lib/python3.11/site-packages (1.26.4)\n",
+      "Requirement already satisfied: python-dateutil>=2.8.2 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2.8.2)\n",
+      "Requirement already satisfied: pytz>=2020.1 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2023.3.post1)\n",
+      "Requirement already satisfied: tzdata>=2022.1 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2023.3)\n",
+      "Requirement already satisfied: six>=1.5 in /opt/anaconda3/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas) (1.16.0)\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Use this cell to install pandas and numpy if you haven't already\n",
+    "!pip install pandas numpy\n",
+    "\n",
+    "# Section: Importing Libraries\n",
+    "import pandas as pd\n",
+    "import numpy as np\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "0b8c48f8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Requirement already satisfied: pandas in /opt/anaconda3/lib/python3.11/site-packages (2.1.4)\r\n",
+      "Requirement already satisfied: numpy in /opt/anaconda3/lib/python3.11/site-packages (1.26.4)\r\n",
+      "Requirement already satisfied: python-dateutil>=2.8.2 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2.8.2)\r\n",
+      "Requirement already satisfied: pytz>=2020.1 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2023.3.post1)\r\n",
+      "Requirement already satisfied: tzdata>=2022.1 in /opt/anaconda3/lib/python3.11/site-packages (from pandas) (2023.3)\r\n",
+      "Requirement already satisfied: six>=1.5 in /opt/anaconda3/lib/python3.11/site-packages (from python-dateutil>=2.8.2->pandas) (1.16.0)\r\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Use this cell to install pandas, numpy, and os if you haven't already\n",
+    "!pip install pandas numpy\n",
+    "\n",
+    "# Importing the necessary libraries\n",
+    "import pandas as pd  # For data manipulation and analysis\n",
+    "import numpy as np   # For numerical operations\n",
+    "import os            # For interacting with the operating system\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "5b663c58",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Three different ways to reach 100:\n",
+      "50 + 50 = 100\n",
+      "200 - 100 = 100\n",
+      "25 * 4 = 100\n",
+      "\n",
+      "Division of two floating-point variables:\n",
+      "5.5 / 2.2 = 2.5\n",
+      "\n",
+      "Concatenation to form a word:\n",
+      "Py + thon = Python\n",
+      "\n",
+      "Concatenation to form sentences:\n",
+      "'Jupyter notebook'\n",
+      "'is awesome'\n"
+     ]
+    }
+   ],
+   "source": [
+    "# 3 different ways of reaching a result of 100 by adding or subtracting numeric variables\n",
+    "a = 50 + 50\n",
+    "b = 200 - 100\n",
+    "c = 25 * 4\n",
+    "\n",
+    "print(\"Three different ways to reach 100:\")\n",
+    "print(f\"50 + 50 = {a}\")\n",
+    "print(f\"200 - 100 = {b}\")\n",
+    "print(f\"25 * 4 = {c}\")\n",
+    "\n",
+    "# Code 2 floating-point variables and divide them by each other\n",
+    "float1 = 5.5\n",
+    "float2 = 2.2\n",
+    "result = float1 / float2\n",
+    "\n",
+    "print(\"\\nDivision of two floating-point variables:\")\n",
+    "print(f\"{float1} / {float2} = {result}\")\n",
+    "\n",
+    "# Construct a short word made of separate strings (concatenation)\n",
+    "part1 = \"Py\"\n",
+    "part2 = \"thon\"\n",
+    "word = part1 + part2\n",
+    "\n",
+    "print(\"\\nConcatenation to form a word:\")\n",
+    "print(f\"{part1} + {part2} = {word}\")\n",
+    "\n",
+    "# Construct 2 short sentences made of separate strings\n",
+    "str1 = \"Jupyter\"\n",
+    "str2 = \"notebook\"\n",
+    "sentence1 = str1 + \" \" + str2\n",
+    "\n",
+    "str3 = \"is\"\n",
+    "str4 = \"awesome\"\n",
+    "sentence2 = str3 + \" \" + str4\n",
+    "\n",
+    "print(\"\\nConcatenation to form sentences:\")\n",
+    "print(f\"'{str1} {str2}'\")\n",
+    "print(f\"'{str3} {str4}'\")\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3f1e4eac",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

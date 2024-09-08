@@ -1,0 +1,736 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "fea8851d",
+   "metadata": {},
+   "source": [
+    "# 1 Importing Libaries "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "91caf43c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Import Libaries \n",
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "06f82213",
+   "metadata": {},
+   "source": [
+    "# 2 Importing Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "426e8762",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Import CSV File Orders\n",
+    "df = pd.read_csv(r'/Users/katiejogoyal/Desktop/Career Foundry_Module_4 /Data_set_carrer4/orders.csv', index_col = False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "c9a7440c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Telling python to remeber main folder \n",
+    "path = r'/Users/katiejogoyal/Desktop/Career Foundry_Module_4 /Data_set_carrer4/orders.csv'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "101db4ef",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'/Users/katiejogoyal/Desktop/Career Foundry_Module_4 /Data_set_carrer4/orders.csv'"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "path"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5861d290",
+   "metadata": {},
+   "source": [
+    "# 3 Exploring Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "b346f79b",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>order_id</th>\n",
+       "      <th>user_id</th>\n",
+       "      <th>eval_set</th>\n",
+       "      <th>order_number</th>\n",
+       "      <th>order_dow</th>\n",
+       "      <th>order_hour_of_day</th>\n",
+       "      <th>days_since_prior_order</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2398795</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>2</td>\n",
+       "      <td>3</td>\n",
+       "      <td>7</td>\n",
+       "      <td>15.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>473747</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>3</td>\n",
+       "      <td>3</td>\n",
+       "      <td>12</td>\n",
+       "      <td>21.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>2254736</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>4</td>\n",
+       "      <td>4</td>\n",
+       "      <td>7</td>\n",
+       "      <td>29.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>431534</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>5</td>\n",
+       "      <td>4</td>\n",
+       "      <td>15</td>\n",
+       "      <td>28.0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   order_id  user_id eval_set  order_number  order_dow  order_hour_of_day  \\\n",
+       "0   2539329        1    prior             1          2                  8   \n",
+       "1   2398795        1    prior             2          3                  7   \n",
+       "2    473747        1    prior             3          3                 12   \n",
+       "3   2254736        1    prior             4          4                  7   \n",
+       "4    431534        1    prior             5          4                 15   \n",
+       "\n",
+       "   days_since_prior_order  \n",
+       "0                     NaN  \n",
+       "1                    15.0  \n",
+       "2                    21.0  \n",
+       "3                    29.0  \n",
+       "4                    28.0  "
+      ]
+     },
+     "execution_count": 5,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Calling in the DF\n",
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "id": "293fca7d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>order_id</th>\n",
+       "      <th>user_id</th>\n",
+       "      <th>eval_set</th>\n",
+       "      <th>order_number</th>\n",
+       "      <th>order_dow</th>\n",
+       "      <th>order_hour_of_day</th>\n",
+       "      <th>days_since_prior_order</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>NaN</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2398795</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>2</td>\n",
+       "      <td>3</td>\n",
+       "      <td>7</td>\n",
+       "      <td>15.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>473747</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>3</td>\n",
+       "      <td>3</td>\n",
+       "      <td>12</td>\n",
+       "      <td>21.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>2254736</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>4</td>\n",
+       "      <td>4</td>\n",
+       "      <td>7</td>\n",
+       "      <td>29.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>431534</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>5</td>\n",
+       "      <td>4</td>\n",
+       "      <td>15</td>\n",
+       "      <td>28.0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   order_id  user_id eval_set  order_number  order_dow  order_hour_of_day  \\\n",
+       "0   2539329        1    prior             1          2                  8   \n",
+       "1   2398795        1    prior             2          3                  7   \n",
+       "2    473747        1    prior             3          3                 12   \n",
+       "3   2254736        1    prior             4          4                  7   \n",
+       "4    431534        1    prior             5          4                 15   \n",
+       "\n",
+       "   days_since_prior_order  \n",
+       "0                     NaN  \n",
+       "1                    15.0  \n",
+       "2                    21.0  \n",
+       "3                    29.0  \n",
+       "4                    28.0  "
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Printing first 5 rows \n",
+    "df.head(5)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "03bb3ed7",
+   "metadata": {},
+   "source": [
+    "# 4 Importing Products CSV"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "id": "32983fee",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "#Reading Products.csv\n",
+    "df_prods = pd.read_csv(r'/Users/katiejogoyal/Desktop/Career Foundry_Module_4 /Data_set_carrer4/products.csv',index_col = False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "61d3a415",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Telling python to remeber main folder \n",
+    "path = r'/Users/katiejogoyal/Desktop/Career Foundry_Module_4 /Data_set_carrer4/products.csv'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "009bfee4",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "'/Users/katiejogoyal/Desktop/Career Foundry_Module_4 /Data_set_carrer4/products.csv'"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "path"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "80f2f78e",
+   "metadata": {},
+   "source": [
+    "# Exploring Products Data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "bc2ee967",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>product_id</th>\n",
+       "      <th>product_name</th>\n",
+       "      <th>aisle_id</th>\n",
+       "      <th>department_id</th>\n",
+       "      <th>prices</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1</td>\n",
+       "      <td>Chocolate Sandwich Cookies</td>\n",
+       "      <td>61</td>\n",
+       "      <td>19</td>\n",
+       "      <td>5.8</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2</td>\n",
+       "      <td>All-Seasons Salt</td>\n",
+       "      <td>104</td>\n",
+       "      <td>13</td>\n",
+       "      <td>9.3</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>3</td>\n",
+       "      <td>Robust Golden Unsweetened Oolong Tea</td>\n",
+       "      <td>94</td>\n",
+       "      <td>7</td>\n",
+       "      <td>4.5</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>4</td>\n",
+       "      <td>Smart Ones Classic Favorites Mini Rigatoni Wit...</td>\n",
+       "      <td>38</td>\n",
+       "      <td>1</td>\n",
+       "      <td>10.5</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>5</td>\n",
+       "      <td>Green Chile Anytime Sauce</td>\n",
+       "      <td>5</td>\n",
+       "      <td>13</td>\n",
+       "      <td>4.3</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   product_id                                       product_name  aisle_id  \\\n",
+       "0           1                         Chocolate Sandwich Cookies        61   \n",
+       "1           2                                   All-Seasons Salt       104   \n",
+       "2           3               Robust Golden Unsweetened Oolong Tea        94   \n",
+       "3           4  Smart Ones Classic Favorites Mini Rigatoni Wit...        38   \n",
+       "4           5                          Green Chile Anytime Sauce         5   \n",
+       "\n",
+       "   department_id  prices  \n",
+       "0             19     5.8  \n",
+       "1             13     9.3  \n",
+       "2              7     4.5  \n",
+       "3              1    10.5  \n",
+       "4             13     4.3  "
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Calling in the df_prods\n",
+    "df_prods.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "327075c9",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "First 20 rows:\n",
+      "    product_id                                       product_name  aisle_id  \\\n",
+      "0            1                         Chocolate Sandwich Cookies        61   \n",
+      "1            2                                   All-Seasons Salt       104   \n",
+      "2            3               Robust Golden Unsweetened Oolong Tea        94   \n",
+      "3            4  Smart Ones Classic Favorites Mini Rigatoni Wit...        38   \n",
+      "4            5                          Green Chile Anytime Sauce         5   \n",
+      "5            6                                       Dry Nose Oil        11   \n",
+      "6            7                     Pure Coconut Water With Orange        98   \n",
+      "7            8                  Cut Russet Potatoes Steam N' Mash       116   \n",
+      "8            9                  Light Strawberry Blueberry Yogurt       120   \n",
+      "9           10     Sparkling Orange Juice & Prickly Pear Beverage       115   \n",
+      "10          11                                  Peach Mango Juice        31   \n",
+      "11          12                         Chocolate Fudge Layer Cake       119   \n",
+      "12          13                                  Saline Nasal Mist        11   \n",
+      "13          14                     Fresh Scent Dishwasher Cleaner        74   \n",
+      "14          15                           Overnight Diapers Size 6        56   \n",
+      "15          16                      Mint Chocolate Flavored Syrup       103   \n",
+      "16          17                                  Rendered Duck Fat        35   \n",
+      "17          18                Pizza for One Suprema  Frozen Pizza        79   \n",
+      "18          19   Gluten Free Quinoa Three Cheese & Mushroom Blend        63   \n",
+      "19          20     Pomegranate Cranberry & Aloe Vera Enrich Drink        98   \n",
+      "\n",
+      "    department_id  prices  \n",
+      "0              19     5.8  \n",
+      "1              13     9.3  \n",
+      "2               7     4.5  \n",
+      "3               1    10.5  \n",
+      "4              13     4.3  \n",
+      "5              11     2.6  \n",
+      "6               7     4.4  \n",
+      "7               1     1.1  \n",
+      "8              16     7.0  \n",
+      "9               7     8.4  \n",
+      "10              7     2.8  \n",
+      "11              1     9.4  \n",
+      "12             11     1.1  \n",
+      "13             17     6.5  \n",
+      "14             18    11.2  \n",
+      "15             19     5.2  \n",
+      "16             12    17.1  \n",
+      "17              1    10.6  \n",
+      "18              9    12.0  \n",
+      "19              7     6.0  \n"
+     ]
+    }
+   ],
+   "source": [
+    "# Print the first 20 rows\n",
+    "print(\"First 20 rows:\")\n",
+    "print(df_prods.head(20))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "0da65790",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "Last 35 rows:\n",
+      "       product_id                                       product_name  \\\n",
+      "49658       49654                   Teriyaki Sauce, Sesame, Original   \n",
+      "49659       49655                                        Apple Cider   \n",
+      "49660       49656                         Masada Kosher Pocket Bread   \n",
+      "49661       49657                                  Cabernet Tomatoes   \n",
+      "49662       49658                         Brie with Herbs Foil Wedge   \n",
+      "49663       49659                            Organic Creamed Coconut   \n",
+      "49664       49660                        Professionals Sleek Shampoo   \n",
+      "49665       49661                                              Porto   \n",
+      "49666       49662                       Bacon Cheddar Pretzel Pieces   \n",
+      "49667       49663  Ultra Protein Power Crunch Peanut Butter N' Ho...   \n",
+      "49668       49664                     Lemon Cayenne Drinking Vinegar   \n",
+      "49669       49665      Super Dark Coconut Ash & Banana Chocolate Bar   \n",
+      "49670       49666                      Ginger Snaps Snacking Cookies   \n",
+      "49671       49667           Enchilada with Spanish Rice & Beans Meal   \n",
+      "49672       49668                     Apple Cinnamon Scented Candles   \n",
+      "49673       49669                                   K Cup Dark Blend   \n",
+      "49674       49670                                Beef Summer Sausage   \n",
+      "49675       49671                               Milk Chocolate Drops   \n",
+      "49676       49672                             Cafe Mocha K-Cup Packs   \n",
+      "49677       49673              Stone Baked Multi Grain Artisan Rolls   \n",
+      "49678       49674            Frozen Greek Yogurt Bars Chocolate Chip   \n",
+      "49679       49675                Cinnamon Dolce Keurig Brewed K Cups   \n",
+      "49680       49676                             Ultra Red Energy Drink   \n",
+      "49681       49677                    Thick & Chunky Sloppy Joe Sauce   \n",
+      "49682       49678                    Large Chicken & Cheese Taquitos   \n",
+      "49683       49679                            Famous Chocolate Wafers   \n",
+      "49684       49680                 All Natural Creamy Caesar Dressing   \n",
+      "49685       49681            Spaghetti with Meatballs and Sauce Meal   \n",
+      "49686       49682                                 California Limeade   \n",
+      "49687       49683                                     Cucumber Kirby   \n",
+      "49688       49684          Vodka, Triple Distilled, Twist of Vanilla   \n",
+      "49689       49685                 En Croute Roast Hazelnut Cranberry   \n",
+      "49690       49686                                   Artisan Baguette   \n",
+      "49691       49687         Smartblend Healthy Metabolism Dry Cat Food   \n",
+      "49692       49688                             Fresh Foaming Cleanser   \n",
+      "\n",
+      "       aisle_id  department_id  prices  \n",
+      "49658         5             13     4.0  \n",
+      "49659        98              7    10.7  \n",
+      "49660       128              3     7.1  \n",
+      "49661        83              4     8.3  \n",
+      "49662         2             16     3.9  \n",
+      "49663        17             13     3.1  \n",
+      "49664        22             11     6.7  \n",
+      "49665       134              5     8.2  \n",
+      "49666       107             19     3.6  \n",
+      "49667        57             14    10.2  \n",
+      "49668       100             21    13.7  \n",
+      "49669        45             19     6.9  \n",
+      "49670        61             19     5.2  \n",
+      "49671        38              1     6.6  \n",
+      "49672       101             17     5.6  \n",
+      "49673       100             21     4.7  \n",
+      "49674       106             12    19.2  \n",
+      "49675        45             19     3.0  \n",
+      "49676        26              7     6.5  \n",
+      "49677       129              1     5.6  \n",
+      "49678        37              1    11.1  \n",
+      "49679        26              7    14.0  \n",
+      "49680        64              7    14.5  \n",
+      "49681        59             15     8.9  \n",
+      "49682       129              1     3.4  \n",
+      "49683        61             19     6.0  \n",
+      "49684        89             13     4.9  \n",
+      "49685        38              1     6.9  \n",
+      "49686        98              7     4.3  \n",
+      "49687        83              4    13.2  \n",
+      "49688       124              5     5.3  \n",
+      "49689        42              1     3.1  \n",
+      "49690       112              3     7.8  \n",
+      "49691        41              8     4.7  \n",
+      "49692        73             11    13.5  \n"
+     ]
+    }
+   ],
+   "source": [
+    "# Print the last 35 rows\n",
+    "print(\"\\nLast 35 rows:\")\n",
+    "print(df_prods.tail(35))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "65d9294c",
+   "metadata": {},
+   "source": [
+    "# 5 Awnsering Questions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "id": "39b98a0a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Get the maximum value of the \"aisle_id\" column\n",
+    "max_aisle_id = df_prods['aisle_id'].max()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "0fdb21e7",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The maximum value of the 'aisle_id' column is: 134\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Print the maximum value\n",
+    "print(\"The maximum value of the 'aisle_id' column is:\", max_aisle_id)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 17,
+   "id": "3e4291aa",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Find the data type of the \"department_id\" column\n",
+    "department_id_dtype = df_prods['department_id'].dtype\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 18,
+   "id": "98895053",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "The data type of the 'department_id' column is: int64\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Print the data type\n",
+    "print(\"The data type of the 'department_id' column is:\", department_id_dtype)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "421fd403",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

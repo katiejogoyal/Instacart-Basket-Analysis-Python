@@ -1,0 +1,861 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "915682a5",
+   "metadata": {},
+   "source": [
+    "# 4.62 Combining & Exporting Data\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "655aa2a0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Import libraries\n",
+    "import pandas as pd\n",
+    "import numpy as np\n",
+    "import os"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "8097007a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Tell Python to remeber the path\n",
+    "path = r'//Users/katiejogoyal/Desktop/Career Foundry_Module_4/data'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "60ef0c77",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Import dataset ordes_products_combined.pkl\n",
+    "df_ord_prod_combinded = pd.read_pickle(os.path.join(path,'orders_products_combined.pkl'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "fd3377c0",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Import dataset products_final.csv\n",
+    "df_prod = pd.read_csv(os.path.join(path, 'orders_final.csv'), index_col = False)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "id": "d6fe6e08",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>order_id</th>\n",
+       "      <th>user_id</th>\n",
+       "      <th>eval_set</th>\n",
+       "      <th>order_number</th>\n",
+       "      <th>order_dow</th>\n",
+       "      <th>order_hour_of_day</th>\n",
+       "      <th>days_since_prior_order</th>\n",
+       "      <th>product_id</th>\n",
+       "      <th>add_to_cart_order</th>\n",
+       "      <th>reordered</th>\n",
+       "      <th>_merge</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>7.0</td>\n",
+       "      <td>196</td>\n",
+       "      <td>1</td>\n",
+       "      <td>0</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>7.0</td>\n",
+       "      <td>14084</td>\n",
+       "      <td>2</td>\n",
+       "      <td>0</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>7.0</td>\n",
+       "      <td>12427</td>\n",
+       "      <td>3</td>\n",
+       "      <td>0</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>7.0</td>\n",
+       "      <td>26088</td>\n",
+       "      <td>4</td>\n",
+       "      <td>0</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>7.0</td>\n",
+       "      <td>26405</td>\n",
+       "      <td>5</td>\n",
+       "      <td>0</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   order_id  user_id eval_set  order_number  order_dow  order_hour_of_day  \\\n",
+       "0   2539329        1    prior             1          2                  8   \n",
+       "1   2539329        1    prior             1          2                  8   \n",
+       "2   2539329        1    prior             1          2                  8   \n",
+       "3   2539329        1    prior             1          2                  8   \n",
+       "4   2539329        1    prior             1          2                  8   \n",
+       "\n",
+       "   days_since_prior_order  product_id  add_to_cart_order  reordered _merge  \n",
+       "0                     7.0         196                  1          0   both  \n",
+       "1                     7.0       14084                  2          0   both  \n",
+       "2                     7.0       12427                  3          0   both  \n",
+       "3                     7.0       26088                  4          0   both  \n",
+       "4                     7.0       26405                  5          0   both  "
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Check the output ord_prod_combinded\n",
+    "df_ord_prod_combinded.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "id": "aa39e08d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(32434489, 11)"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Check the shape\n",
+    "df_ord_prod_combinded.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "id": "58a60432",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>Unnamed: 0</th>\n",
+       "      <th>order_id</th>\n",
+       "      <th>user_id</th>\n",
+       "      <th>eval_set</th>\n",
+       "      <th>order_number</th>\n",
+       "      <th>order_dow</th>\n",
+       "      <th>order_hour_of_day</th>\n",
+       "      <th>days_since_prior_order</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>0</td>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>7.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>1</td>\n",
+       "      <td>2398795</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>2</td>\n",
+       "      <td>3</td>\n",
+       "      <td>7</td>\n",
+       "      <td>15.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>2</td>\n",
+       "      <td>473747</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>3</td>\n",
+       "      <td>3</td>\n",
+       "      <td>12</td>\n",
+       "      <td>21.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>3</td>\n",
+       "      <td>2254736</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>4</td>\n",
+       "      <td>4</td>\n",
+       "      <td>7</td>\n",
+       "      <td>29.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>4</td>\n",
+       "      <td>431534</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>5</td>\n",
+       "      <td>4</td>\n",
+       "      <td>15</td>\n",
+       "      <td>28.0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   Unnamed: 0  order_id  user_id eval_set  order_number  order_dow  \\\n",
+       "0           0   2539329        1    prior             1          2   \n",
+       "1           1   2398795        1    prior             2          3   \n",
+       "2           2    473747        1    prior             3          3   \n",
+       "3           3   2254736        1    prior             4          4   \n",
+       "4           4    431534        1    prior             5          4   \n",
+       "\n",
+       "   order_hour_of_day  days_since_prior_order  \n",
+       "0                  8                     7.0  \n",
+       "1                  7                    15.0  \n",
+       "2                 12                    21.0  \n",
+       "3                  7                    29.0  \n",
+       "4                 15                    28.0  "
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "#Check output prod\n",
+    "df_prod.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "id": "aa78f08b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Drop unnecessary colomns for df_prod\n",
+    "df_prod = df_prod.drop(['Unnamed: 0'], axis=1)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "id": "77816112",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>order_id</th>\n",
+       "      <th>user_id</th>\n",
+       "      <th>eval_set</th>\n",
+       "      <th>order_number</th>\n",
+       "      <th>order_dow</th>\n",
+       "      <th>order_hour_of_day</th>\n",
+       "      <th>days_since_prior_order</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>2539329</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>1</td>\n",
+       "      <td>2</td>\n",
+       "      <td>8</td>\n",
+       "      <td>7.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2398795</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>2</td>\n",
+       "      <td>3</td>\n",
+       "      <td>7</td>\n",
+       "      <td>15.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>473747</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>3</td>\n",
+       "      <td>3</td>\n",
+       "      <td>12</td>\n",
+       "      <td>21.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>3</th>\n",
+       "      <td>2254736</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>4</td>\n",
+       "      <td>4</td>\n",
+       "      <td>7</td>\n",
+       "      <td>29.0</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>4</th>\n",
+       "      <td>431534</td>\n",
+       "      <td>1</td>\n",
+       "      <td>prior</td>\n",
+       "      <td>5</td>\n",
+       "      <td>4</td>\n",
+       "      <td>15</td>\n",
+       "      <td>28.0</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   order_id  user_id eval_set  order_number  order_dow  order_hour_of_day  \\\n",
+       "0   2539329        1    prior             1          2                  8   \n",
+       "1   2398795        1    prior             2          3                  7   \n",
+       "2    473747        1    prior             3          3                 12   \n",
+       "3   2254736        1    prior             4          4                  7   \n",
+       "4    431534        1    prior             5          4                 15   \n",
+       "\n",
+       "   days_since_prior_order  \n",
+       "0                     7.0  \n",
+       "1                    15.0  \n",
+       "2                    21.0  \n",
+       "3                    29.0  \n",
+       "4                    28.0  "
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Check out put for df_prod\n",
+    "df_prod.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "id": "165446e2",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(3421083, 7)"
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Check Shape \n",
+    "df_prod.shape"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "70f2012e",
+   "metadata": {},
+   "source": [
+    "# Determine a way to combine ordors_products_combinded to Products"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 53,
+   "id": "07c21a21",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Combine DataFrames using merge on 'product_id'\n",
+    "df_ord_prod_combined = pd.merge(df_ord_prod_combinded, df_prod, on='product_id', indicator = True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 54,
+   "id": "17d5cfa4",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Check if the '_merge' column exists and drop it if it does\n",
+    "if '_merge' in df_ord_prod_combined.columns:\n",
+    "    df_ord_prod_combined = df_ord_prod_combined.drop(['_merge'], axis=1)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 55,
+   "id": "ac5112d8",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "   product_id order_details product_name\n",
+      "0           1      details1    Product A\n",
+      "1           2      details2    Product B\n",
+      "2           3      details3    Product C\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Display the combined DataFrame\n",
+    "print(df_ord_prod_combined)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 56,
+   "id": "614674a5",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Merge the updated dataframes\n",
+    "df_ord_prod_merge = df_prod.merge(df_combined, on = 'product_id', indicator = True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 57,
+   "id": "7eb536b1",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>product_id</th>\n",
+       "      <th>product_name_x</th>\n",
+       "      <th>order_details</th>\n",
+       "      <th>product_name_y</th>\n",
+       "      <th>_merge</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1</td>\n",
+       "      <td>Product A</td>\n",
+       "      <td>details1</td>\n",
+       "      <td>Product A</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2</td>\n",
+       "      <td>Product B</td>\n",
+       "      <td>details2</td>\n",
+       "      <td>Product B</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>3</td>\n",
+       "      <td>Product C</td>\n",
+       "      <td>details3</td>\n",
+       "      <td>Product C</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   product_id product_name_x order_details product_name_y _merge\n",
+       "0           1      Product A      details1      Product A   both\n",
+       "1           2      Product B      details2      Product B   both\n",
+       "2           3      Product C      details3      Product C   both"
+      ]
+     },
+     "execution_count": 57,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Check the output\n",
+    "df_ord_prod_merge.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 58,
+   "id": "47360c5d",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(3, 5)"
+      ]
+     },
+     "execution_count": 58,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Shape of df_ord_merg\n",
+    "df_ord_prod_merge.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 59,
+   "id": "5e034efa",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "both          3\n",
+       "left_only     0\n",
+       "right_only    0\n",
+       "Name: _merge, dtype: int64"
+      ]
+     },
+     "execution_count": 59,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df_ord_prod_merge['_merge'].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 60,
+   "id": "42055ff2",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Merge the updated dataframes\n",
+    "df_ord_prod_merge = df_prod.merge(df_ord_prod_combined, on = 'product_id', indicator = True)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 61,
+   "id": "a4480e73",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/html": [
+       "<div>\n",
+       "<style scoped>\n",
+       "    .dataframe tbody tr th:only-of-type {\n",
+       "        vertical-align: middle;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe tbody tr th {\n",
+       "        vertical-align: top;\n",
+       "    }\n",
+       "\n",
+       "    .dataframe thead th {\n",
+       "        text-align: right;\n",
+       "    }\n",
+       "</style>\n",
+       "<table border=\"1\" class=\"dataframe\">\n",
+       "  <thead>\n",
+       "    <tr style=\"text-align: right;\">\n",
+       "      <th></th>\n",
+       "      <th>product_id</th>\n",
+       "      <th>product_name_x</th>\n",
+       "      <th>order_details</th>\n",
+       "      <th>product_name_y</th>\n",
+       "      <th>_merge</th>\n",
+       "    </tr>\n",
+       "  </thead>\n",
+       "  <tbody>\n",
+       "    <tr>\n",
+       "      <th>0</th>\n",
+       "      <td>1</td>\n",
+       "      <td>Product A</td>\n",
+       "      <td>details1</td>\n",
+       "      <td>Product A</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>1</th>\n",
+       "      <td>2</td>\n",
+       "      <td>Product B</td>\n",
+       "      <td>details2</td>\n",
+       "      <td>Product B</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "    <tr>\n",
+       "      <th>2</th>\n",
+       "      <td>3</td>\n",
+       "      <td>Product C</td>\n",
+       "      <td>details3</td>\n",
+       "      <td>Product C</td>\n",
+       "      <td>both</td>\n",
+       "    </tr>\n",
+       "  </tbody>\n",
+       "</table>\n",
+       "</div>"
+      ],
+      "text/plain": [
+       "   product_id product_name_x order_details product_name_y _merge\n",
+       "0           1      Product A      details1      Product A   both\n",
+       "1           2      Product B      details2      Product B   both\n",
+       "2           3      Product C      details3      Product C   both"
+      ]
+     },
+     "execution_count": 61,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Check the output\n",
+    "df_ord_prod_merge.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 62,
+   "id": "497ad11e",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "(3, 5)"
+      ]
+     },
+     "execution_count": 62,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "df_ord_prod_merge.shape"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 63,
+   "id": "ef88f0fa",
+   "metadata": {},
+   "outputs": [
+    {
+     "data": {
+      "text/plain": [
+       "both          3\n",
+       "left_only     0\n",
+       "right_only    0\n",
+       "Name: _merge, dtype: int64"
+      ]
+     },
+     "execution_count": 63,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "# Confirm Results \n",
+    "df_ord_prod_merge['_merge'].value_counts()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 64,
+   "id": "0ad3cfa7",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Export Data to pkl\n",
+    "df_ord_prod_merge.to_pickle(os.path.join(path, 'data'))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "999075c4",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.10.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
